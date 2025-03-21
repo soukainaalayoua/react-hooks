@@ -1,12 +1,26 @@
 /* App.css */
-.App {
-  text-align: center;
-}
 
+h1{
+text-align: center;
+padding: 10px;
+}
+#root{
+  display: flex ;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.filter{
+  text-align: center;
+  padding: 15px;
+}
 .movie-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+ 
+
 }
 
 .movie-card {
@@ -14,14 +28,12 @@
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
-}
-
-.movie-card img {
-  width: 100%;
-  height: auto;
+  
 }
 
 .filter input {
   margin: 5px;
   padding: 8px;
 }
+/* App.css */
+

@@ -32,7 +32,13 @@ function App() {
 
   // Handle adding a new movie
   const addMovie = (newMovie) => {
-    setMovies([...movies, newMovie]);
+    setMovies((prevMovies) => {
+      const updatedMovies = [...prevMovies, newMovie];
+      // Update the filtered movies list when a new movie is added
+      setFilteredMovies(updatedMovies);
+      console.log(updatedMovies); // Log the updated list to check if movie is added
+      return updatedMovies;
+    });
   };
 
   // Filter movies by title and rating
@@ -80,5 +86,7 @@ function App() {
 }
 
 export default App;
+
+
 
 

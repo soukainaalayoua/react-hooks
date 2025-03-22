@@ -12,18 +12,20 @@ function Filter({ setTitleFilter, setRatingFilter }) {
 
   const handleRatingChange = (e) => {
     setRating(e.target.value);
-    setRatingFilter(e.target.value); // Keep the rating as string until it's used
+    setRatingFilter(e.target.value);
   };
 
   return (
-    <div className="filter">
+    <div className="flex justify-center items-center w-full space-x-4"> {/* Flex pour centrer */}
       <input
+        className="p-2 border rounded-md"
         type="text"
         placeholder="Filter by title"
         value={title}
         onChange={handleTitleChange}
       />
       <input
+        className="p-2 border rounded-md"
         type="number"
         placeholder="Filter by rating"
         value={rating}
@@ -36,4 +38,5 @@ function Filter({ setTitleFilter, setRatingFilter }) {
 }
 
 export default Filter;
+
 

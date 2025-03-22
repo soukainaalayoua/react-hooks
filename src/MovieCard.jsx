@@ -1,19 +1,14 @@
-// MovieCard.js
 import React from 'react';
 
 function MovieCard({ title, description, posterURL, rating }) {
-  const imgStyle = {
-    width: '300px',   // Set the width you want
-    height: '300px',  // Set the height you want
-    objectFit: 'cover', // Ensures the image fits without distortion
-  };
-
   return (
-    <div className="movie-card" >
-      <img  src={posterURL} alt={title}  />
-      <h3 >{title}</h3>
-      <p>{description}</p>
-      <p>Rating: {rating}</p>
+    <div className="movie-card flex flex-row items-center gap-4 p-4 border rounded-lg shadow-md bg-gray-100">
+      <img className="w-48 h-48 object-cover rounded-lg" src={posterURL} alt={title} />
+      <div>
+        <h3 className="text-2xl font-bold text-blue-600">{title}</h3>
+        <p className="text-lg text-gray-700">{description}</p>
+        <p className="text-lg text-gray-900 font-semibold">⭐ Rating: {rating}</p>
+      </div>
     </div>
   );
 }

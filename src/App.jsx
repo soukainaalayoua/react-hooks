@@ -1,92 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MovieList from './MovieList';
-import Filter from './Filter';
+import { Routes, Route } from 'react-router-dom';
+import MovieDetails from './MovieDetails';
 
 function App() {
-  const [movies, setMovies] = useState([
+  const [movies] = useState([
     {
       title: 'Inception',
       description: 'A mind-bending thriller by Christopher Nolan.',
-      posterURL: '/images/inception.jpeg',  // ✅ Correct path
+      posterURL: '/images/inception.jpeg',
       rating: 8.8,
+      trailerLink: 'https://www.youtube.com/embed/YoHD9XEInc0'
     },
     {
       title: 'The Dark Knight',
       description: 'The legendary Batman movie, directed by Christopher Nolan.',
-      posterURL: '/images/thedarknight.jpeg',  // ✅ Correct path
+      posterURL: '/images/thedarknight.jpeg',
       rating: 9.0,
+      trailerLink: 'https://www.youtube.com/embed/EXeTwQWrcwY'
     },
     {
       title: 'Interstellar',
       description: 'A journey through space and time.',
-      posterURL: '/images/interstellar.jpeg',  // ✅ Correct path
+      posterURL: '/images/interstellar.jpeg',
       rating: 8.6,
+      trailerLink: 'https://www.youtube.com/embed/zSWdZVtXT7E'
     },
     {
       title: 'The Prestige',
       description: 'A tale of two magicians.',
-      posterURL: '/images/prestige.jpeg',  // ✅ Correct path
+      posterURL: '/images/prestige.jpeg',
       rating: 8.5,
+      trailerLink: 'https://www.youtube.com/embed/RLtaA9fFNXU'
     },
   ]);
-  
-
-  const [filteredMovies, setFilteredMovies] = useState(movies);
-  const [titleFilter, setTitleFilter] = useState('');
-  const [ratingFilter, setRatingFilter] = useState('');
-
-  const addMovie = (newMovie) => {
-    setMovies((prevMovies) => {
-      const updatedMovies = [...prevMovies, newMovie];
-      setFilteredMovies(updatedMovies);
-      return updatedMovies;
-    });
-  };
-
-  const filterMovies = () => {
-    let filtered = movies;
-    if (titleFilter) {
-      filtered = filtered.filter((movie) =>
-        movie.title.toLowerCase().includes(titleFilter.toLowerCase())
-      );
-    }
-    if (ratingFilter) {
-      const rating = parseFloat(ratingFilter);  // Convert rating to a number
-      filtered = filtered.filter((movie) => movie.rating >= rating);
-    }
-    setFilteredMovies(filtered);
-  };
-
-  useEffect(() => {
-    filterMovies();
-  }, [titleFilter, ratingFilter]);
-
   return (
-    <div className="flex  bg-gray-200">
-      <h1 className="text-3xl font-bold my-4 ">My Movie App</h1>
-      <Filter setTitleFilter={setTitleFilter} setRatingFilter={setRatingFilter} />
-      <MovieList movies={filteredMovies} />
-      <div className="flex justify-center mt-6 w-full"> 
-      <button
-        onClick={() =>
-          addMovie({
-            title: 'The Prestige',
-            description: 'A tale of two magicians.',
-            posterURL: '/images/prestige.jpeg',
-            rating: 8.5,
-          })
-        }
-         className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
-      >
-        Add Movie
-      </button>
-      </div>
+    <div className="flex bg-gray-200">
+      <h1 className="text-3xl font-bold my-4">My Movie App</h1>
+      <Routes>
+        <Route path="/" element={<MovieList movies={movies} />} />
+        <Route path="/movie/:title" element={<MovieDetails movies={movies} />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
-
 
 
 

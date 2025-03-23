@@ -12,7 +12,7 @@ input{
   margin: 5px;
   background-color: aliceblue;
   border-radius: 15px;
-  width: auto;
+  
 
   
  
@@ -24,7 +24,7 @@ h1 ,h3, p {
  img {
   width: 250px;
   height: 350px;
-  object-fit: cover; /* Makes sure the image aspect ratio is kept and it's resized accordingly */
+  object-fit: cover; 
   border-radius: 8px;
   margin: 10px;
   text-align: center;
